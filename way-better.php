@@ -1,8 +1,8 @@
 <?php
 
 // fw = for who
-function ordr_pz($pizzatype, $fw) {
-
+function ordr_pz($pizzatype, $fw) 
+{
     $type = $pizzatype;
     echo 'Creating new order... <br>';
     $toPrint = 'A ';
@@ -10,31 +10,31 @@ function ordr_pz($pizzatype, $fw) {
     $p = calc_cts($type);
 
     $address = 'unknown';
-    if($fw == 'koen')
-    {
+    if($fw == 'koen'){
         $address = 'a yacht in Antwerp';
-    } elseif ($fw == 'manuele')
-    {
+    } 
+
+    elseif ($fw == 'manuele'){
         $address = 'somewhere in Belgium';
-    } elseif ($fw == 'students') {
+    } 
+
+    elseif ($fw == 'students') {
         $address = 'BeCode office';
     }
 
-        $toPrint .=   ' pizza should be sent to ' . $fw . ". <br>The address: {$address}.";
+    $toPrint .=   ' pizza should be sent to ' . $fw . ". <br>The address: {$address}.";
     echo $toPrint; echo '<br>';
     echo'The bill is €'.$p.'.<br>';
-
-
-
-
     echo "Order finished.<br><br>";
 }
 
-function total_price($p) {
+function total_price($p) 
+{
     return $p;
 }
 
-function test($p_type) {
+function test($p_type) 
+{
     echo "Test: type is {$p_type}. <br>";
 }
 
@@ -45,14 +45,13 @@ function calc_cts($p_type)
     if ($p_type == 'marguerita') {
         $cst = 5;
     }
+    
     else {
-        if ($p_type == 'golden')
-        {
+        if ($p_type == 'golden') {
             $cst = 100;
         }
 
-        if ($p_type == 'calzone')
-        {
+        if ($p_type == 'calzone') {
             $cst = 10;
         }
 
@@ -72,12 +71,12 @@ function ordr_piz_all()
     ordr_pz('golden', 'students');
 }
 
-function make_Allhappy($do_it) {
-if ($do_it) {
+function make_Allhappy($do_it) 
+{
+    if ($do_it) {
         ordr_piz_all();
-    } else {
-        // Should not do anything when false
-    }
+    } 
+  
 }
 
 make_Allhappy(true);
