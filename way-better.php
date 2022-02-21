@@ -3,21 +3,8 @@
 
 function orderPizza($pizzatype, $clientName) 
 {
-    
-    $pizzaPrice = calculateCosts($pizzatype);
-    $address = 'unknown';
-
-    if ($clientName == 'koen') {
-        $address = 'a yacht in Antwerp';
-    } 
-
-    elseif ($clientName == 'manuele') {
-        $address = 'somewhere in Belgium';
-    } 
-
-    elseif ($clientName == 'students') {
-        $address = 'BeCode office';
-    }
+    $pizzaPrice = getPrice($pizzatype);
+    $address = getAddress($clientName);
 
     echo $message = 
     "Creating new order... <br>"
@@ -27,42 +14,39 @@ function orderPizza($pizzatype, $clientName)
     . "Order finished.<br><br>";
 }
 
-function calculateCosts($pizzaType)
+function getAddress($clientName)
 {
-    $cost = 'unknown';
-
-    if ($pizzaType == 'marguerita') {
-        $cost = 5;
+    if ($clientName == 'koen') {
+        $address = 'a yacht in Antwerp';
+    } elseif ($clientName == 'manuele') {
+        $address = 'somewhere in Belgium';
+    } elseif ($clientName == 'students') {
+        $address = 'BeCode office';
     }
     
-    if ($pizzaType == 'golden') {
+    return $address;
+}
+
+function getPrice($pizzaType)
+{
+    if ($pizzaType == 'marguerita') {
+        $cost = 5;
+    } elseif ($pizzaType == 'golden') {
         $cost = 100;
-    }
-
-    if ($pizzaType == 'calzone') {
+    } elseif ($pizzaType == 'calzone') {
         $cost = 10;
-    }
-
-    if ($pizzaType == 'hawaii') {
+    } elseif ($pizzaType == 'hawaii') {
         throw new Exception('Computer says no');
     }
     
     return $cost;
 }
 
-function placeOrderAll()
+function placeAllOrders()
 {
     orderPizza('calzone', 'koen');
     orderPizza('marguerita', 'manuele');
     orderPizza('golden', 'students');
 }
 
-function placeOrder($confirmOrder) 
-{
-    if ($confirmOrder) {
-        placeOrderAll();
-    } 
-  
-}
-
-placeOrder(true);
+placeAllOrders();
