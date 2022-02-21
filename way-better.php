@@ -10,11 +10,11 @@ function ordr_pz($pizzatype, $fw)
     $p = calc_cts($type);
 
     $address = 'unknown';
-    if($fw == 'koen'){
+    if ($fw == 'koen') {
         $address = 'a yacht in Antwerp';
     } 
 
-    elseif ($fw == 'manuele'){
+    elseif ($fw == 'manuele') {
         $address = 'somewhere in Belgium';
     } 
 
@@ -46,19 +46,18 @@ function calc_cts($p_type)
         $cst = 5;
     }
     
-    else {
-        if ($p_type == 'golden') {
-            $cst = 100;
-        }
-
-        if ($p_type == 'calzone') {
-            $cst = 10;
-        }
-
-        if ($p_type == 'hawaii') {
-            throw new Exception('Computer says no');
-        }
+    if ($p_type == 'golden') {
+        $cst = 100;
     }
+
+    if ($p_type == 'calzone') {
+        $cst = 10;
+    }
+
+    if ($p_type == 'hawaii') {
+        throw new Exception('Computer says no');
+    }
+    
 
     return $cst;
 }
